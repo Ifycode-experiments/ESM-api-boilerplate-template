@@ -1,0 +1,34 @@
+{
+  "name": "youser-nodejs",
+  "version": "1.0.0",
+  "description": "Node, express & mongoDB backend repo for youser CRUD application.",
+  "main": "srcServer.js",
+  "scripts": {
+    "prestart": "babel-node buildScripts/startMessage.js",
+    "start": "nodemon --exec npm-run-all --parallel open:src lint:watch",
+    "open:src": "babel-node buildScripts/srcServer.js",
+    "lint": "esw buildScripts --color",
+    "lint:watch": "npm run lint -- --watch"
+  },
+  "author": "Obiagba Mary",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.17"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "chalk": "^4.1.0",
+    "eslint": "^7.20.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-watch": "^7.0.0",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "open": "^7.4.2"
+  }
+}
