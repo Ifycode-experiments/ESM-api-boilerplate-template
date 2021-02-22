@@ -1,5 +1,6 @@
 import express from 'express';
 import open from 'open';
+import mongooseModuleExport from './db';
 
 const port = 3000;
 const app = express();
