@@ -6,11 +6,11 @@ mongoose.connect(`mongodb://localhost:27017/${process.env.DBNAME}`, {
     useUnifiedTopology: true,
     useFindAndModify: false
 },
- error => {
-    if (!error)
-        console.log( chalk.green('MongoDB connection successful!!!') );
+ err => {
+    if (!err)
+        console.log( chalk.greenBright('MongoDB connection successful!!!') );
     else
-        console.log( chalk.red('Error in DB connection: ' + JSON.stringify(error, undefined, 2)) );
+        console.log( chalk.redBright(`Error in DB connection: ${err.message} \n`) );
 });
 
 export const mongooseModuleExport = mongoose;
