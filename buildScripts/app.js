@@ -13,8 +13,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-const users = '/users';
 
-app.use(`${users}`, expressRouter);
+app.use('/users', expressRouter);
 
-export const app;
+export { app };
