@@ -12,7 +12,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-
 app.use('/users', expressRouter);
+
+app.use(( req, res, next) => {
+  res.status(200).json({
+    message: 'App works!'
+  });
+});
 
 export { app };
