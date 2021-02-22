@@ -7,4 +7,6 @@ const UserSchema = mongoose.Schema({
   phone: { type: Number }
 });
 
-export const UserModel = mongoose.model('User', UserSchema);
+let UserModel = mongoose.model('User', UserSchema);
+
+export { UserModel };
