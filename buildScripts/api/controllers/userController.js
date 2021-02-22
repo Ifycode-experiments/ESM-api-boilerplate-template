@@ -6,6 +6,8 @@ import chalk from 'chalk';
 let router = express.Router();
 let ObjectId = mongoose.Types.ObjectId;
 
+/* eslint-disable no-console */
+
 /*=========================
     operations for /users
 ==========================*/

@@ -2,8 +2,10 @@ import express from 'express';
 import open from 'open';
 import bodyParser from 'body-parser';
 
-import mongooseModuleExport from './db';
+import mongooseModuleExport from './db'; //eslint-disable-line no-unused-vars
 import { router as expressRouter } from './api/controllers/userController';
+
+/* eslint-disable no-console */
 
 const port = 3000;
 const app = express();

@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import chalk from 'chalk';
 
+/* eslint-disable no-console */
+
 mongoose.connect(`mongodb://localhost:27017/${process.env.DBNAME}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
