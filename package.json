@@ -2,11 +2,11 @@
   "name": "youser-nodejs",
   "version": "1.0.0",
   "description": "Node, express & mongoDB backend repo for youser CRUD application.",
-  "main": "srcServer.js",
+  "main": "server.js",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
     "start": "nodemon --exec npm-run-all --parallel open:src lint:watch",
-    "open:src": "babel-node buildScripts/srcServer.js",
+    "open:src": "babel-node buildScripts/server.js",
     "lint": "esw buildScripts --color",
     "lint:watch": "npm run lint -- --watch"
   },
