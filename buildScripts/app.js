@@ -1,9 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
-
-import mongooseModuleExport from './db'; //eslint-disable-line no-unused-vars
 import { router as expressRouter } from './api/controllers/userController';
+import mongooseModuleExport from './db'; //eslint-disable-line no-unused-vars
 
 const app = express();
 
