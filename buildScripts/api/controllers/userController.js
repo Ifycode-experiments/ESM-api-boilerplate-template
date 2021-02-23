@@ -14,12 +14,32 @@ let ObjectId = mongoose.Types.ObjectId;
 
 router.get('/', (req, res) => {//eslint-disable-line no-unused-vars
   User.find()
+  .select('_id name address email phone')
   .exec()
   .then(docs => {
-    console.log( chalk.yellow(docs) );
-    res.status(200).json(docs);
+    const response = {
+      count: docs.length,
+      users: docs.map(doc => {
+        return {
+          _id: doc._id,
+          name: doc.name,
+          address: doc.address,
+          email: doc.email,
+          phone: doc.phone,
+          request: {
+            type: 'GET',
+            url: `http://localhost:3000/users/${doc._id}`
+          }
+        }
+      })
+    };
+    res.status(200).json(response);
+    console.log( chalk.greenBright('\nGet users request successful! \n\nRunning at http://localhost:3000/users/\n') );
   })
   .catch(err => {
+    res.status(500).json({
+        error: `${err}`
+    });
     console.log( chalk.redBright(`\nError retriving users: ${err}\n`) );
   });
 });
