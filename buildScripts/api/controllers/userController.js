@@ -8,9 +8,9 @@ let ObjectId = mongoose.Types.ObjectId;
 
 /* eslint-disable no-console */
 
-/*=========================
-    operations for /users
-==========================*/
+/*======================
+  operations for /users
+=======================*/
 
 router.get('/', (req, res) => {//eslint-disable-line no-unused-vars
   User.find()
@@ -80,9 +80,45 @@ router.post('/', (req, res) => {
 });
 
 
-/*===========================
-    operations for /users/id
-============================*/
+/*=============================
+  operations for /users/userId
+==============================*/
+
+router.get('/:userId', (req, res, next) => {
+  const id = req.params.userId;
+  User.findById(id)
+  .select('_id name address email phone')
+  .exec()
+  .then(doc => {
+    if (doc) {
+      res.status(200).json({
+        _id: doc._id,
+        name: doc.name,
+        address: doc.address,
+        email: doc.email,
+        phone: doc.phone,
+        request: {
+          type: 'GET',
+          description: 'Url link to all users',
+          url: 'http://localhost:3000/users/'
+        }
+      });
+    }else {
+        res.status(404).json({
+            message: 'No record found for provided ID'
+        })
+        console.log( chalk.redBright('\nNo valid entry found for provided ID\n') );
+    }
+    console.log( chalk.greenBright(`\nGet user request successful! \n\nUser url: http://localhost:3000/users/${doc._id}\n`) );
+  })
+  .catch(err => {
+    res.status(500).json({
+      message: 'Invalid ID',
+      error: `${err}`
+    });
+    console.log( chalk.redBright(`\nError retriving user: ${err}\n`) );
+  });
+});
 
 router.delete('/:userId', (req, res, next) => {
   const id = req.params.userId;
