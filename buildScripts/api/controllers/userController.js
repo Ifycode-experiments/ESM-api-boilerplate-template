@@ -55,17 +55,27 @@ router.post('/', (req, res) => {
 
   user.save()
   .then(doc => {
-    console.log(doc);
     res.status(201).json({
-      message: 'Handling POST requests to /users',
-      createdUser: doc
+      message: 'User created successfully!',
+      newUser: {
+        _id: doc._id,
+        name: doc.name,
+        address: doc.address,
+        email: doc.email,
+        phone: doc.phone,
+        request: {
+          type: 'GET',
+          url: `http://localhost:3000/users/${doc._id}`
+        }
+      }
     });
+    console.log( chalk.greenBright(`\nUser CREATED successfully! \n\nCreated User url: http://localhost:3000/users/${doc._id}\n`) );
   })
   .catch(err => {
-    console.log( chalk.redBright('Error saving user: \n\n' + JSON.stringify(err, undefined, 2)) );
     res.status(500).json({
-      error: err
+      error: `${err}`
     });
+    console.log( chalk.redBright(`\nError saving user: ${err}\n`) );
   });
 });
 
