@@ -120,6 +120,36 @@ router.get('/:userId', (req, res, next) => {
   });
 });
 
+
+router.patch('/:userId', (req, res, next) => {
+  const id = req.params.userId;
+  const updateOps = {};
+  for  (const ops of req.body) {
+      updateOps[ops.propName] = ops.value;
+  }
+  User.updateOne({_id: id}, { $set: updateOps })
+  .exec()
+  .then(response => {
+    console.log(response);
+    console.log( chalk.greenBright(`\nPatch user request successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
+    return res.status(200).json({
+      message: 'Patch user request successful!',
+      request: {
+        type: 'GET',
+        description: 'Url link to updated user',
+        url: `http://localhost:3000/users/${id}`
+      }
+    });
+  })
+  .catch(err => {
+    res.status(500).json({
+      message: 'Error updating user',
+      error: `${err}`
+    });
+    console.log( chalk.redBright(`\nError updating user: ${err}\n`) );
+  });
+});
+
 router.delete('/:userId', (req, res, next) => {
   const id = req.params.userId;
 
