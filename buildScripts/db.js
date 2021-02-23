@@ -10,7 +10,7 @@ mongoose.connect(`mongodb://localhost:27017/${process.env.DBNAME}`, {
 },
  err => {
     if (!err)
-        console.log( chalk.greenBright('\n MongoDB connection successful!!!') );
+        console.log( chalk.greenBright('\nMongoDB connection successful!!!') );
     else
         console.log( chalk.redBright(`Error in DB connection: ${err.message} \n`) );
 });

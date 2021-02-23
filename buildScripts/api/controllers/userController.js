@@ -13,16 +13,19 @@ let ObjectId = mongoose.Types.ObjectId;
 ==========================*/
 
 router.get('/', (req, res) => {//eslint-disable-line no-unused-vars
-  User.find((error, docs) => {
-    if (!error) {
-        res.send(docs);
-    }else {
-        console.log( chalk.redBright('Error retriving Users: ' + JSON.stringify(error, undefined, 2)) );
-    }
+  User.find()
+  .exec()
+  .then(docs => {
+    console.log( chalk.yellow(doc) );
+    res.status(200).json(doc);
+  })
+  .catch(err => {
+    console.log( chalk.redBright(`\nError retriving users: ${err}\n`) );
   });
 });
 
 router.post('/', (req, res) => {
+
   let user = new User({
     name: req.body.name,
     address: req.body.address,
@@ -30,12 +33,19 @@ router.post('/', (req, res) => {
     phone: req.body.phone
   });
 
-  user.save((error, doc) => {
-      if (!error) {
-          res.send(doc);
-      }else {
-          console.log('Error Saving user: ' + JSON.stringify(error, undefined, 2));
-      }
+  user.save()
+  .then(doc => {
+    console.log(doc);
+    res.status(201).json({
+      message: 'Handling POST requests to /users',
+      createdUser: doc
+    });
+  })
+  .catch(err => {
+    console.log( chalk.redBright('Error saving user: ' + JSON.stringify(err, undefined, 2)) );
+    res.status(500).json({
+      error: err
+    });
   });
 });
 
