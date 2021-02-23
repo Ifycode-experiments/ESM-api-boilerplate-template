@@ -49,4 +49,46 @@ router.post('/', (req, res) => {
   });
 });
 
+
+/*===========================
+    operations for /users/id
+============================*/
+
+router.delete('/:userId', (req, res, next) => {
+  const id = req.params.userId;
+
+  /*if (!ObjectId.isValid(id)) {
+    console.log( chalk.greenBright(`\nNo record for this ID: ${id}\n`) );
+    return res.status(404).json([
+      `No record for this ID: ${id}`
+    ]);
+  }*/
+
+  User.deleteOne({_id: id})
+  .exec()
+  .then(doc => {
+    console.log(doc); //
+    console.log( chalk.greenBright('\nUser deleted successfully!\n') );
+    res.status(200).json({
+      message: 'User deleted successfully',
+      request: {
+        type: 'POST',
+        url: 'http://localhost:3000/users/',
+        data: {
+          name: 'String',
+          address: 'String',
+          email: 'String',
+          phone: 'Number'
+        }
+      }
+    });
+  })
+  .catch(err => {
+    console.log( chalk.redBright(err));
+    res.status(500).json({
+      error: err
+    });
+  });
+});
+
 export { router };
