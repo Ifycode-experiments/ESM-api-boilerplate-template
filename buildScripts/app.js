@@ -1,7 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
-import { router as expressRouter } from './api/controllers/userController';
+import { router as appController } from './api/controllers/appController';
+import { router as userController } from './api/controllers/userController';
 import mongooseModuleExport from './db'; //eslint-disable-line no-unused-vars
 
 const app = express();
@@ -12,7 +13,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.use('/users', expressRouter);
+app.use('/', appController);
+app.use('/users', userController);
 
 /*
 app.use((req, res, next) => {
