@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import {UserModel as User} from '../models/user';
+import { UserModel as User } from '../models/user';
 import chalk from 'chalk';
 
 let router = express.Router();
@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
       })
     };
     res.status(200).json(response);
-    console.log( chalk.greenBright('\nGet users request successful! \n\nRunning at http://localhost:3000/users/\n') );
+    console.log( chalk.greenBright('\nGET users request successful! \n\nRunning at http://localhost:3000/users/\n') );
   })
   .catch(err => {
     res.status(500).json({
@@ -103,13 +103,13 @@ router.get('/:userId', (req, res, next) => {
           url: 'http://localhost:3000/users/'
         }
       });
+      console.log( chalk.greenBright(`\nGET user request successful! \n\nUser url: http://localhost:3000/users/${doc._id}\n`) );
     }else {
-        res.status(404).json({
-            message: 'No record found for provided ID'
-        })
-        console.log( chalk.redBright('\nNo valid entry found for provided ID\n') );
+      console.log( chalk.redBright('\nNo record found for provided ID\n') );
+      return res.status(404).json({
+        message: 'No record found for provided ID'
+      });
     }
-    console.log( chalk.greenBright(`\nGet user request successful! \n\nUser url: http://localhost:3000/users/${doc._id}\n`) );
   })
   .catch(err => {
     res.status(500).json({
@@ -120,7 +120,6 @@ router.get('/:userId', (req, res, next) => {
   });
 });
 
-
 router.patch('/:userId', (req, res, next) => {
   const id = req.params.userId;
   const updateOps = {};
@@ -129,9 +128,8 @@ router.patch('/:userId', (req, res, next) => {
   }
   User.updateOne({_id: id}, { $set: updateOps })
   .exec()
-  .then(response => {
-    console.log(response);
-    console.log( chalk.greenBright(`\nPatch user request successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
+  .then(() => {
+    console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
     return res.status(200).json({
       message: 'Patch user request successful!',
       request: {
@@ -162,7 +160,7 @@ router.put('/:id', (req, res) => {
   User.findByIdAndUpdate(id, { $set: resetUser }, { new: true })
   .exec()
   .then(response => {
-    console.log( chalk.greenBright(`\nPut request for ID ${response._id} successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
+    console.log( chalk.greenBright(`\nPUT request for ID ${response._id} successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
     return res.status(200).json({
       message: 'Put user request successful!',
       request: {
@@ -186,8 +184,7 @@ router.delete('/:userId', (req, res, next) => {
   User.deleteOne({_id: id})
   .exec()
   .then(doc => {
-    console.log(doc); //
-    console.log( chalk.greenBright('\nUser deleted successfully!\n') );
+    console.log( chalk.greenBright('\nUser DELETED successfully!\n') );
     res.status(200).json({
       message: 'User deleted successfully!',
       request: {

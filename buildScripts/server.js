@@ -1,6 +1,6 @@
 import http from 'http';
 //import open from 'open';
-import { app as app} from './app';
+import { app as app } from './app';
 import chalk from 'chalk';
 
 const port = process.env.PORT || 3000;
