@@ -143,6 +143,38 @@ router.patch('/:userId', (req, res, next) => {
   })
   .catch(err => {
     res.status(500).json({
+      message: 'Error updating user property & value',
+      error: `${err}`
+    });
+    console.log( chalk.redBright(`\nError updating user property & value: ${err}\n`) );
+  });
+});
+
+
+router.put('/:id', (req, res) => {
+  let id = req.params.id;
+  let resetUser = {
+      name: req.body.name,
+      address: req.body.address,
+      email: req.body.email,
+      phone: req.body.phone
+  }
+
+  User.findByIdAndUpdate(id, { $set: resetUser }, { new: true })
+  .exec()
+  .then(response => {
+    console.log( chalk.greenBright(`\nPut request for ID ${response._id} successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
+    return res.status(200).json({
+      message: 'Put user request successful!',
+      request: {
+        type: 'GET',
+        description: 'Url link to updated user',
+        url: `http://localhost:3000/users/${id}`
+      }
+    });
+  })
+  .catch(err => {
+    res.status(500).json({
       message: 'Error updating user',
       error: `${err}`
     });
