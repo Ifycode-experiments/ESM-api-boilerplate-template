@@ -1,5 +1,5 @@
-## Youser app nodejs
-This is the repository for the youser app backend source code to be used alongside youser-client.
+## Node mongoDB starter kit
+This is the repository containing backend source code to be used alongside your any frontend projects. To update readme soon.
 
 **Technologies:**
 
