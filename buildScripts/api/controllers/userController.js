@@ -4,15 +4,16 @@ import {UserModel as User} from '../models/user';
 import chalk from 'chalk';
 
 let router = express.Router();
-let ObjectId = mongoose.Types.ObjectId;
 
 /* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+let ObjectId = mongoose.Types.ObjectId;
 
 /*======================
   operations for /users
 =======================*/
 
-router.get('/', (req, res) => {//eslint-disable-line no-unused-vars
+router.get('/', (req, res) => {
   User.find()
   .select('_id name address email phone')
   .exec()
@@ -45,7 +46,6 @@ router.get('/', (req, res) => {//eslint-disable-line no-unused-vars
 });
 
 router.post('/', (req, res) => {
-
   let user = new User({
     name: req.body.name,
     address: req.body.address,
@@ -150,7 +150,6 @@ router.patch('/:userId', (req, res, next) => {
   });
 });
 
-
 router.put('/:id', (req, res) => {
   let id = req.params.id;
   let resetUser = {
@@ -181,7 +180,6 @@ router.put('/:id', (req, res) => {
     console.log( chalk.redBright(`\nError updating user: ${err}\n`) );
   });
 });
-
 
 router.delete('/:userId', (req, res, next) => {
   const id = req.params.userId;
