@@ -4,15 +4,16 @@ import {UserModel as User} from '../models/user';
 import chalk from 'chalk';
 
 let router = express.Router();
-let ObjectId = mongoose.Types.ObjectId;
 
 /* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+let ObjectId = mongoose.Types.ObjectId;
 
 /*======================
   operations for /users
 =======================*/
 
-router.get('/', (req, res) => {//eslint-disable-line no-unused-vars
+router.get('/', (req, res) => {
   User.find()
   .select('_id name address email phone')
   .exec()
@@ -45,7 +46,6 @@ router.get('/', (req, res) => {//eslint-disable-line no-unused-vars
 });
 
 router.post('/', (req, res) => {
-
   let user = new User({
     name: req.body.name,
     address: req.body.address,
@@ -120,27 +120,81 @@ router.get('/:userId', (req, res, next) => {
   });
 });
 
+
+router.patch('/:userId', (req, res, next) => {
+  const id = req.params.userId;
+  const updateOps = {};
+  for  (const ops of req.body) {
+      updateOps[ops.propName] = ops.value;
+  }
+  User.updateOne({_id: id}, { $set: updateOps })
+  .exec()
+  .then(response => {
+    console.log(response);
+    console.log( chalk.greenBright(`\nPatch user request successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
+    return res.status(200).json({
+      message: 'Patch user request successful!',
+      request: {
+        type: 'GET',
+        description: 'Url link to updated user',
+        url: `http://localhost:3000/users/${id}`
+      }
+    });
+  })
+  .catch(err => {
+    res.status(500).json({
+      message: 'Error updating user property & value',
+      error: `${err}`
+    });
+    console.log( chalk.redBright(`\nError updating user property & value: ${err}\n`) );
+  });
+});
+
+router.put('/:id', (req, res) => {
+  let id = req.params.id;
+  let resetUser = {
+      name: req.body.name,
+      address: req.body.address,
+      email: req.body.email,
+      phone: req.body.phone
+  }
+
+  User.findByIdAndUpdate(id, { $set: resetUser }, { new: true })
+  .exec()
+  .then(response => {
+    console.log( chalk.greenBright(`\nPut request for ID ${response._id} successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
+    return res.status(200).json({
+      message: 'Put user request successful!',
+      request: {
+        type: 'GET',
+        description: 'Url link to updated user',
+        url: `http://localhost:3000/users/${id}`
+      }
+    });
+  })
+  .catch(err => {
+    res.status(500).json({
+      message: 'Error updating user',
+      error: `${err}`
+    });
+    console.log( chalk.redBright(`\nError updating user: ${err}\n`) );
+  });
+});
+
 router.delete('/:userId', (req, res, next) => {
   const id = req.params.userId;
-
-  /*if (!ObjectId.isValid(id)) {
-    console.log( chalk.greenBright(`\nNo record for this ID: ${id}\n`) );
-    return res.status(404).json([
-      `No record for this ID: ${id}`
-    ]);
-  }*/
-
   User.deleteOne({_id: id})
   .exec()
   .then(doc => {
     console.log(doc); //
     console.log( chalk.greenBright('\nUser deleted successfully!\n') );
     res.status(200).json({
-      message: 'User deleted successfully',
+      message: 'User deleted successfully!',
       request: {
         type: 'POST',
+        description: 'Url link to make post request to',
         url: 'http://localhost:3000/users/',
-        data: {
+        body: {
           name: 'String',
           address: 'String',
           email: 'String',
@@ -150,10 +204,11 @@ router.delete('/:userId', (req, res, next) => {
     });
   })
   .catch(err => {
-    console.log( chalk.redBright(err));
     res.status(500).json({
-      error: err
+      message: 'Error deleting user',
+      error: `${err}`
     });
+    console.log( chalk.redBright(`\nError deleting user: ${err}\n`) );
   });
 });
 
