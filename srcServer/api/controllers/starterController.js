@@ -9,8 +9,8 @@ let router = express.Router();
 /* eslint-disable no-unused-vars */
 let ObjectId = mongoose.Types.ObjectId;
 
-let starterRoute = 'starter';
-let item = `${starterRoute}-item`;
+let routeName = 'starter';
+let item = `${routeName}-item`;
 
 /*======================
   operations for /starter
@@ -32,13 +32,13 @@ router.get('/', (req, res) => {
           phone: doc.phone,
           request: {
             type: 'GET',
-            url: `http://localhost:3000/${starterRoute}/${doc._id}`
+            url: `http://localhost:3000/${routeName}/${doc._id}`
           }
         }
       })
     };
     res.status(200).json(response);
-    console.log( chalk.greenBright(`\nGET request successful! \n\nRunning at http://localhost:3000/${starterRoute}/\n`) );
+    console.log( chalk.greenBright(`\nGET request successful! \n\nRunning at http://localhost:3000/${routeName}/\n`) );
   })
   .catch(err => {
     res.status(500).json({
@@ -68,11 +68,11 @@ router.post('/', (req, res) => {
         phone: doc.phone,
         request: {
           type: 'GET',
-          url: `http://localhost:3000/${starterRoute}/${doc._id}`
+          url: `http://localhost:3000/${routeName}/${doc._id}`
         }
       }
     });
-    console.log( chalk.greenBright(`\n${item} CREATED successfully! \n\nCreated ${item} url: http://localhost:3000/${starterRoute}/${doc._id}\n`) );
+    console.log( chalk.greenBright(`\n${item} CREATED successfully! \n\nCreated ${item} url: http://localhost:3000/${routeName}/${doc._id}\n`) );
   })
   .catch(err => {
     res.status(500).json({
@@ -103,10 +103,10 @@ router.get('/:starterId', (req, res, next) => {
         request: {
           type: 'GET',
           description: `Url link to all ${item}s`,
-          url: `http://localhost:3000/${starterRoute}/`
+          url: `http://localhost:3000/${routeName}/`
         }
       });
-      console.log( chalk.greenBright(`\nGET request successful! \n\n${item} url: http://localhost:3000/${starterRoute}/${doc._id}\n`) );
+      console.log( chalk.greenBright(`\nGET request successful! \n\n${item} url: http://localhost:3000/${routeName}/${doc._id}\n`) );
     }else {
       console.log( chalk.redBright('\nNo record found for provided ID\n') );
       return res.status(404).json({
@@ -132,13 +132,13 @@ router.patch('/:starterId', (req, res, next) => {
   Starter.updateOne({_id: id}, { $set: updateOps })
   .exec()
   .then(() => {
-    console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${starterRoute}/${id}\n`) );
+    console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
     return res.status(200).json({
       message: 'Patch request successful!',
       request: {
         type: 'GET',
         description: `Url link to updated ${item}`,
-        url: `http://localhost:3000/${starterRoute}/${id}`
+        url: `http://localhost:3000/${routeName}/${id}`
       }
     });
   })
@@ -163,13 +163,13 @@ router.put('/:id', (req, res) => {
   Starter.findByIdAndUpdate(id, { $set: resetItem }, { new: true })
   .exec()
   .then(response => {
-    console.log( chalk.greenBright(`\nPUT request for ID ${response._id} successful! \n\nUpdated ${item} url: http://localhost:3000/${starterRoute}/${id}\n`) );
+    console.log( chalk.greenBright(`\nPUT request for ID ${response._id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
     return res.status(200).json({
       message: `Put request successful!`,
       request: {
         type: 'GET',
         description: `Url link to updated ${item}`,
-        url: `http://localhost:3000/${starterRoute}/${id}`
+        url: `http://localhost:3000/${routeName}/${id}`
       }
     });
   })
