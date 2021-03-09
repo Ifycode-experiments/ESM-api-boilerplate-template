@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { UserModel as User } from '../models/user';
+import { UserModel as User } from '../models/starter';
 import chalk from 'chalk';
 
 let router = express.Router();
