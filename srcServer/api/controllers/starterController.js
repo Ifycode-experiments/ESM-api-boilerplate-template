@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { UserModel as User } from '../models/starter';
+import { StarterModel as Starter } from '../models/starter';
 import chalk from 'chalk';
 
 let router = express.Router();
@@ -14,7 +14,7 @@ let ObjectId = mongoose.Types.ObjectId;
 =======================*/
 
 router.get('/', (req, res) => {
-  User.find()
+  Starter.find()
   .select('_id name address email phone')
   .exec()
   .then(docs => {
@@ -46,14 +46,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  let user = new User({
+  let starter = new Starter({
     name: req.body.name,
     address: req.body.address,
     email: req.body.email,
     phone: req.body.phone
   });
 
-  user.save()
+  starter.save()
   .then(doc => {
     res.status(201).json({
       message: 'User created successfully!',
@@ -86,7 +86,7 @@ router.post('/', (req, res) => {
 
 router.get('/:userId', (req, res, next) => {
   const id = req.params.userId;
-  User.findById(id)
+  Starter.findById(id)
   .select('_id name address email phone')
   .exec()
   .then(doc => {
@@ -126,7 +126,7 @@ router.patch('/:userId', (req, res, next) => {
   for  (const ops of req.body) {
       updateOps[ops.propName] = ops.value;
   }
-  User.updateOne({_id: id}, { $set: updateOps })
+  Starter.updateOne({_id: id}, { $set: updateOps })
   .exec()
   .then(() => {
     console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
@@ -157,7 +157,7 @@ router.put('/:id', (req, res) => {
       phone: req.body.phone
   }
 
-  User.findByIdAndUpdate(id, { $set: resetUser }, { new: true })
+  Starter.findByIdAndUpdate(id, { $set: resetUser }, { new: true })
   .exec()
   .then(response => {
     console.log( chalk.greenBright(`\nPUT request for ID ${response._id} successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
@@ -181,7 +181,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:userId', (req, res, next) => {
   const id = req.params.userId;
-  User.deleteOne({_id: id})
+  Starter.deleteOne({_id: id})
   .exec()
   .then(doc => {
     console.log( chalk.greenBright('\nUser DELETED successfully!\n') );
