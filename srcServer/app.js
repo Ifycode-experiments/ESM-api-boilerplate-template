@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use('/', appController);
-app.use('/users', starterController);
+app.use('/starter', starterController);
 
 app.use((req, res, next) => {
   const error = new Error('Route not found!');

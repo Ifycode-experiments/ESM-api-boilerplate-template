@@ -9,8 +9,11 @@ let router = express.Router();
 /* eslint-disable no-unused-vars */
 let ObjectId = mongoose.Types.ObjectId;
 
+let starterRoute = 'starter';
+let item = `${starterRoute}-item`;
+
 /*======================
-  operations for /users
+  operations for /starter
 =======================*/
 
 router.get('/', (req, res) => {
@@ -20,7 +23,7 @@ router.get('/', (req, res) => {
   .then(docs => {
     const response = {
       count: docs.length,
-      users: docs.map(doc => {
+      items: docs.map(doc => {
         return {
           _id: doc._id,
           name: doc.name,
@@ -29,19 +32,19 @@ router.get('/', (req, res) => {
           phone: doc.phone,
           request: {
             type: 'GET',
-            url: `http://localhost:3000/users/${doc._id}`
+            url: `http://localhost:3000/${starterRoute}/${doc._id}`
           }
         }
       })
     };
     res.status(200).json(response);
-    console.log( chalk.greenBright('\nGET users request successful! \n\nRunning at http://localhost:3000/users/\n') );
+    console.log( chalk.greenBright(`\nGET request successful! \n\nRunning at http://localhost:3000/${starterRoute}/\n`) );
   })
   .catch(err => {
     res.status(500).json({
         error: `${err}`
     });
-    console.log( chalk.redBright(`\nError retriving users: ${err}\n`) );
+    console.log( chalk.redBright(`\nError retriving ${item}s: ${err}\n`) );
   });
 });
 
@@ -56,8 +59,8 @@ router.post('/', (req, res) => {
   starter.save()
   .then(doc => {
     res.status(201).json({
-      message: 'User created successfully!',
-      newUser: {
+      message: `${item} created successfully!`,
+      newItem: {
         _id: doc._id,
         name: doc.name,
         address: doc.address,
@@ -65,27 +68,27 @@ router.post('/', (req, res) => {
         phone: doc.phone,
         request: {
           type: 'GET',
-          url: `http://localhost:3000/users/${doc._id}`
+          url: `http://localhost:3000/${starterRoute}/${doc._id}`
         }
       }
     });
-    console.log( chalk.greenBright(`\nUser CREATED successfully! \n\nCreated User url: http://localhost:3000/users/${doc._id}\n`) );
+    console.log( chalk.greenBright(`\n${item} CREATED successfully! \n\nCreated ${item} url: http://localhost:3000/${starterRoute}/${doc._id}\n`) );
   })
   .catch(err => {
     res.status(500).json({
       error: `${err}`
     });
-    console.log( chalk.redBright(`\nError saving user: ${err}\n`) );
+    console.log( chalk.redBright(`\nError saving ${item}: ${err}\n`) );
   });
 });
 
 
 /*=============================
-  operations for /users/userId
+  operations for /starter/starterId
 ==============================*/
 
-router.get('/:userId', (req, res, next) => {
-  const id = req.params.userId;
+router.get('/:starterId', (req, res, next) => {
+  const id = req.params.starterId;
   Starter.findById(id)
   .select('_id name address email phone')
   .exec()
@@ -99,11 +102,11 @@ router.get('/:userId', (req, res, next) => {
         phone: doc.phone,
         request: {
           type: 'GET',
-          description: 'Url link to all users',
-          url: 'http://localhost:3000/users/'
+          description: `Url link to all ${item}s`,
+          url: `http://localhost:3000/${starterRoute}/`
         }
       });
-      console.log( chalk.greenBright(`\nGET user request successful! \n\nUser url: http://localhost:3000/users/${doc._id}\n`) );
+      console.log( chalk.greenBright(`\nGET request successful! \n\n${item} url: http://localhost:3000/${starterRoute}/${doc._id}\n`) );
     }else {
       console.log( chalk.redBright('\nNo record found for provided ID\n') );
       return res.status(404).json({
@@ -116,12 +119,12 @@ router.get('/:userId', (req, res, next) => {
       message: 'Invalid ID',
       error: `${err}`
     });
-    console.log( chalk.redBright(`\nError retriving user: ${err}\n`) );
+    console.log( chalk.redBright(`\nError retriving ${item}: ${err}\n`) );
   });
 });
 
-router.patch('/:userId', (req, res, next) => {
-  const id = req.params.userId;
+router.patch('/:starterId', (req, res, next) => {
+  const id = req.params.starterId;
   const updateOps = {};
   for  (const ops of req.body) {
       updateOps[ops.propName] = ops.value;
@@ -129,68 +132,68 @@ router.patch('/:userId', (req, res, next) => {
   Starter.updateOne({_id: id}, { $set: updateOps })
   .exec()
   .then(() => {
-    console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
+    console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${starterRoute}/${id}\n`) );
     return res.status(200).json({
-      message: 'Patch user request successful!',
+      message: 'Patch request successful!',
       request: {
         type: 'GET',
-        description: 'Url link to updated user',
-        url: `http://localhost:3000/users/${id}`
+        description: `Url link to updated ${item}`,
+        url: `http://localhost:3000/${starterRoute}/${id}`
       }
     });
   })
   .catch(err => {
     res.status(500).json({
-      message: 'Error updating user property & value',
+      message: `Error updating ${item} property & value`,
       error: `${err}`
     });
-    console.log( chalk.redBright(`\nError updating user property & value: ${err}\n`) );
+    console.log( chalk.redBright(`\nError updating ${item} property & value: ${err}\n`) );
   });
 });
 
 router.put('/:id', (req, res) => {
   let id = req.params.id;
-  let resetUser = {
+  let resetItem = {
       name: req.body.name,
       address: req.body.address,
       email: req.body.email,
       phone: req.body.phone
   }
 
-  Starter.findByIdAndUpdate(id, { $set: resetUser }, { new: true })
+  Starter.findByIdAndUpdate(id, { $set: resetItem }, { new: true })
   .exec()
   .then(response => {
-    console.log( chalk.greenBright(`\nPUT request for ID ${response._id} successful! \n\nUpdated user url: http://localhost:3000/users/${id}\n`) );
+    console.log( chalk.greenBright(`\nPUT request for ID ${response._id} successful! \n\nUpdated ${item} url: http://localhost:3000/${starterRoute}/${id}\n`) );
     return res.status(200).json({
-      message: 'Put user request successful!',
+      message: `Put request successful!`,
       request: {
         type: 'GET',
-        description: 'Url link to updated user',
-        url: `http://localhost:3000/users/${id}`
+        description: `Url link to updated ${item}`,
+        url: `http://localhost:3000/${starterRoute}/${id}`
       }
     });
   })
   .catch(err => {
     res.status(500).json({
-      message: 'Error updating user',
+      message: `Error updating ${item}`,
       error: `${err}`
     });
-    console.log( chalk.redBright(`\nError updating user: ${err}\n`) );
+    console.log( chalk.redBright(`\nError updating ${item}: ${err}\n`) );
   });
 });
 
-router.delete('/:userId', (req, res, next) => {
-  const id = req.params.userId;
+router.delete('/:starterId', (req, res, next) => {
+  const id = req.params.starterId;
   Starter.deleteOne({_id: id})
   .exec()
   .then(doc => {
-    console.log( chalk.greenBright('\nUser DELETED successfully!\n') );
+    console.log( chalk.greenBright(`\n${item} DELETED successfully!\n`) );
     res.status(200).json({
-      message: 'User deleted successfully!',
+      message: `${item} deleted successfully!`,
       request: {
         type: 'POST',
         description: 'Url link to make post request to',
-        url: 'http://localhost:3000/users/',
+        url: `http://localhost:3000/${item}/`,
         body: {
           name: 'String',
           address: 'String',
@@ -202,10 +205,10 @@ router.delete('/:userId', (req, res, next) => {
   })
   .catch(err => {
     res.status(500).json({
-      message: 'Error deleting user',
+      message: `Error deleting ${item}`,
       error: `${err}`
     });
-    console.log( chalk.redBright(`\nError deleting user: ${err}\n`) );
+    console.log( chalk.redBright(`\nError deleting ${item}: ${err}\n`) );
   });
 });
 
