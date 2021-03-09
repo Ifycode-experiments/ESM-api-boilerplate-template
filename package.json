@@ -1,7 +1,7 @@
 {
-  "name": "youser-nodejs",
+  "name": "node-mongo-starter-kit",
   "version": "1.0.0",
-  "description": "Node, express & mongoDB backend repo for youser CRUD application.",
+  "description": "Node, express & mongoDB backend starter files.",
   "main": "srcServer/server.js",
   "scripts": {
     "prestart": "babel-node srcServer/startMessage.js",
