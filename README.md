@@ -8,6 +8,7 @@ Development environment has already been set up i.e. connection to server & db, 
 * Install starter-kit through cli or download from github.
 * Cd into the folder you installed it and run `npm install` to install dependencies.
 * Run `npm start` or `npm start -s` to start the server and mongoDB connection.
+* Follow the guide/instruction after `Error in DB connection` message in the console to establish successful connection.
 
 
 ## Contributing to the starter-kit
