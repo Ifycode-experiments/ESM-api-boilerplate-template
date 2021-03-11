@@ -1,10 +1,11 @@
 # node-mongo-starter-kit
-The `node-mongo-starter-kit` helps to make mongoDB development in nodejs easier. Using the node-mongo-starter-kit has been made easier with the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). While you can also choose to download/clone this starter kit directly from github, the cli let's you not only installs the node-mongo-starter-kit, but also allows you to add new model & controller files with content using simple commands. We encourage you to opt for the cli for better experience.
+The `node-mongo-starter-kit` helps to make mongoDB development in nodejs easier. Using the node-mongo-starter-kit has been made easier with the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). While you can also choose to download/clone this starter kit directly from github, the cli let's you not only installs the node-mongo-starter-kit, but also allows you to add new model & controller files with content using simple commands. Opt for the cli for better experience.
 
 ## How to use node-mongo-starter-kit
-Development environment has already been set up i.e. connection to server & db, eslint and babel transpiler. For use locally, you need to have mongoDB installed with database and collection created and mongoDB running. If you choose to use `mongoDB atlas` then you don't need to have mongoDB installed - just turn on wifi or data connection, set up your database and create a cluster.
+Development environment has already been set up i.e. connection to server & db, eslint and babel transpiler. For use locally, you need to have mongoDB installed with database and collection created and mongoDB running. If you choose to use `mongoDB atlas` then you don't need to have mongoDB installed - just turn on wifi/data connection, set up your database and create a cluster.
 * Install starter-kit through cli or download from github.
-* cd into the starter-kit folder and run `npm start` or `npm start -s` to start the mongoDB connection.
+* cd into the folder you installed it and run `npm install` to install dependencies.
+* Run `npm start` or `npm start -s` to start the server and mongoDB connection.
 
 
 ## Contributing to the starter-kit
@@ -12,7 +13,7 @@ See [Contributing to node-mongo-cli section](https://github.com/code-collabo/nod
 
 
 ## Related repositories
-This is the repository for the files and folders that the node-mongo-cli will set up fo r you, made by Code Collabo community. Other related repos to the cli project:
+This is the repository for the files and folders that the node-mongo-cli will set up for you, made by Code Collabo community. Other related repos to the cli project:
 * [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli).
 * [node-mongo-docs](https://github.com/code-collabo/node-mongo-docs).
 
