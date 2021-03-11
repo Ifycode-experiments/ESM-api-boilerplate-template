@@ -18,7 +18,7 @@ let item = `${routeName}-item`;
 
 router.get('/', (req, res) => {
   Starter.find()
-  .select('_id name address email phone')
+  .select('_id name age')
   .exec()
   .then(docs => {
     const response = {
@@ -27,9 +27,7 @@ router.get('/', (req, res) => {
         return {
           _id: doc._id,
           name: doc.name,
-          address: doc.address,
-          email: doc.email,
-          phone: doc.phone,
+          age: doc.age,
           request: {
             type: 'GET',
             url: `http://localhost:3000/${routeName}/${doc._id}`
@@ -51,9 +49,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   let starter = new Starter({
     name: req.body.name,
-    address: req.body.address,
-    email: req.body.email,
-    phone: req.body.phone
+    age: req.body.age
   });
 
   starter.save()
@@ -63,9 +59,7 @@ router.post('/', (req, res) => {
       newItem: {
         _id: doc._id,
         name: doc.name,
-        address: doc.address,
-        email: doc.email,
-        phone: doc.phone,
+        age: doc.age,
         request: {
           type: 'GET',
           url: `http://localhost:3000/${routeName}/${doc._id}`
@@ -90,16 +84,14 @@ router.post('/', (req, res) => {
 router.get('/:starterId', (req, res, next) => {
   const id = req.params.starterId;
   Starter.findById(id)
-  .select('_id name address email phone')
+  .select('_id name age')
   .exec()
   .then(doc => {
     if (doc) {
       res.status(200).json({
         _id: doc._id,
         name: doc.name,
-        address: doc.address,
-        email: doc.email,
-        phone: doc.phone,
+        age: doc.age,
         request: {
           type: 'GET',
           description: `Url link to all ${item}s`,
@@ -155,9 +147,7 @@ router.put('/:id', (req, res) => {
   let id = req.params.id;
   let resetItem = {
       name: req.body.name,
-      address: req.body.address,
-      email: req.body.email,
-      phone: req.body.phone
+      age: req.body.age
   }
 
   Starter.findByIdAndUpdate(id, { $set: resetItem }, { new: true })
@@ -196,9 +186,7 @@ router.delete('/:starterId', (req, res, next) => {
         url: `http://localhost:3000/${item}/`,
         body: {
           name: 'String',
-          address: 'String',
-          email: 'String',
-          phone: 'Number'
+          age: 'Number'
         }
       }
     });
