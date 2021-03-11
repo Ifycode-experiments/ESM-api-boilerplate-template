@@ -2,7 +2,7 @@
 The `node-mongo-starter-kit` helps to make mongoDB development in nodejs easier. Using the node-mongo-starter-kit has been made easier with the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). While you can also choose to download/clone this starter kit directly from github, the cli let's you not only installs the node-mongo-starter-kit, but also allows you to add new model & controller files with content using simple commands. Opt for the cli for better experience.
 
 ## How to use node-mongo-starter-kit
-Development environment has already been set up i.e. connection to server & db, eslint and babel transpiler. For use locally, you need to have mongoDB installed with database and collection created and mongoDB running. If you choose to use `mongoDB atlas` then you don't need to have mongoDB installed - just turn on wifi/data connection, set up your database and create a cluster.
+Development environment has already been set up i.e. connection to server & db, eslint and babel transpiler. For use locally, you need to have `mongoDB` installed with database and collection created and mongoDB running. If you choose to use `mongoDB atlas` then you don't need to have mongoDB installed - just turn on wifi/data connection, set up your database and create a cluster.
 
 **Installation:**
 * Install starter-kit through cli or download from github.
@@ -10,7 +10,8 @@ Development environment has already been set up i.e. connection to server & db, 
 * Run `npm start` or `npm start -s` to start the server and mongoDB connection.
 * Follow the guide/instruction after `Error in DB connection` message in the console to establish successful connection.
 
-**Customizing dev environment**
+**Customizing dev environment:**
+
 Replace `insert-your-project-name` with your own project name in srcServer > startMessage.js.
 
 ## Contributing to the starter-kit
