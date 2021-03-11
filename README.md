@@ -10,6 +10,8 @@ Development environment has already been set up i.e. connection to server & db, 
 * Run `npm start` or `npm start -s` to start the server and mongoDB connection.
 * Follow the guide/instruction after `Error in DB connection` message in the console to establish successful connection.
 
+**Customizing dev environment**
+Replace `insert-your-project-name` with your own project name in srcServer > startMessage.js.
 
 ## Contributing to the starter-kit
 See [Contributing to node-mongo-cli section](https://github.com/code-collabo/node-mongo-cli) of ***node-mongo-cli repo's readme*** for how to contribute to the project.
