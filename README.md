@@ -1,10 +1,25 @@
-## Node mongoDB starter kit
-This is the repository containing backend source code to be used alongside your any frontend projects. To update readme soon.
+# node-mongo-starter-kit
+The `node-mongo-starter-kit` helps to make mongoDB development in nodejs easier. Using the node-mongo-starter-kit has been made easier with the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). While you can also choose to download/clone this starter kit directly from github, the cli let's you not only installs the node-mongo-starter-kit, but also allows you to add new model & controller files with content using simple commands. We encourage you to opt for the cli for better experience.
 
-**Technologies:**
+## How to use node-mongo-starter-kit
+Development environment has already been set up i.e. connection to server & db, eslint and babel transpiler. For use locally, you need to have mongoDB installed with database and collection created and mongoDB running. If you choose to use `mongoDB atlas` then you don't need to have mongoDB installed - just turn on wifi or data connection, set up your database and create a cluster.
+* Install starter-kit through cli or download from github.
+* cd into the starter-kit folder and run `npm start` or `npm start -s` to start the mongoDB connection.
 
-[<img alt="Javascript" width="30px" src="https://png2.cleanpng.com/sh/f9adba6e43e2a6be07ea40ee26d9547f/L0KzQYm3VcI4N6lmhJH0aYP2gLBuTfpifpJ4eARycISwgMP2hCJidZ5uhtk2bHHxd8bohBUuaZtmkJ8AYkDlQom8gsk5PGdnT5CDNUGzSYeBV8E2Omg5TakDOEO5QoSATwBvbz==/kisspng-javascript-programming-language-ajax-5b0b285b9846b7.8510968715274578836237.png" />](https://png2.cleanpng.com/sh/f9adba6e43e2a6be07ea40ee26d9547f/L0KzQYm3VcI4N6lmhJH0aYP2gLBuTfpifpJ4eARycISwgMP2hCJidZ5uhtk2bHHxd8bohBUuaZtmkJ8AYkDlQom8gsk5PGdnT5CDNUGzSYeBV8E2Omg5TakDOEO5QoSATwBvbz==/kisspng-javascript-programming-language-ajax-5b0b285b9846b7.8510968715274578836237.png)
-[<img alt="node js" height="25px" src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" />](https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg)
-[<img alt="mongoDB" height="25px" src="https://webassets.mongodb.com/_com_assets/cms/MongoDB_Logo_FullColorBlack_RGB-4td3yuxzjs.png" />](https://webassets.mongodb.com/_com_assets/cms/MongoDB_Logo_FullColorBlack_RGB-4td3yuxzjs.png)
-[<img alt="Express js" height="25px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8GuRFF1LFA4NIK63ZV4vweimdCPfnfPL6Ww&usqp=CAU" />](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8GuRFF1LFA4NIK63ZV4vweimdCPfnfPL6Ww&usqp=CAU)
-[<img alt="Babel" height="25px" src="https://d33wubrfki0l68.cloudfront.net/7a197cfe44548cc1a3f581152af70a3051e11671/78df8/img/babel.svg" />](https://d33wubrfki0l68.cloudfront.net/7a197cfe44548cc1a3f581152af70a3051e11671/78df8/img/babel.svg)
+
+## Contributing to the starter-kit
+See [Contributing to node-mongo-cli section](https://github.com/code-collabo/node-mongo-cli) of ***node-mongo-cli repo's readme*** for how to contribute to the project.
+
+
+## Related repositories
+This is the repository for the files and folders that the node-mongo-cli will set up fo r you, made by Code Collabo community. Other related repos to the cli project:
+* [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli).
+* [node-mongo-docs](https://github.com/code-collabo/node-mongo-docs).
+
+
+## Technologies
+
+[<img alt="javascript" height="25px" src="https://www.freepnglogos.com/uploads/javascript/javascript-online-logo-for-website-0.png" />](https://github.com/code-collabo/node-mongo-cli)
+[<img alt="node js" height="25px" src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" />](https://github.com/code-collabo/node-mongo-cli)
+[<img alt="mongoDB" height="25px" src="https://webassets.mongodb.com/_com_assets/cms/MongoDB_Logo_FullColorBlack_RGB-4td3yuxzjs.png" />](https://github.com/code-collabo/node-mongo-cli)
+
