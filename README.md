@@ -3,8 +3,10 @@ The `node-mongo-starter-kit` helps to make mongoDB development in nodejs easier.
 
 ## How to use node-mongo-starter-kit
 Development environment has already been set up i.e. connection to server & db, eslint and babel transpiler. For use locally, you need to have mongoDB installed with database and collection created and mongoDB running. If you choose to use `mongoDB atlas` then you don't need to have mongoDB installed - just turn on wifi/data connection, set up your database and create a cluster.
+
+**Installation:**
 * Install starter-kit through cli or download from github.
-* cd into the folder you installed it and run `npm install` to install dependencies.
+* Cd into the folder you installed it and run `npm install` to install dependencies.
 * Run `npm start` or `npm start -s` to start the server and mongoDB connection.
 
 
