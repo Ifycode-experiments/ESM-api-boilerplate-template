@@ -3,7 +3,12 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import { router as appController } from './api/controllers/appController';
 import { router as starterController } from './api/controllers/starterController';
+
+//===== Installed mongoDB's db =======
 import mongooseModuleExport from './db'; //eslint-disable-line no-unused-vars
+
+//===== MongoDB ATLAS db =======
+//import mongooseModuleExportAtlas from './atlas/db'; //eslint-disable-line no-unused-vars
 
 const app = express();
 
