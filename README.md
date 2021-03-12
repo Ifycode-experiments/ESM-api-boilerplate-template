@@ -8,7 +8,7 @@ Development environment has been set up already i.e. connection to server & db, 
 * Install starter-kit through cli or download from github.
 * Cd into the folder you installed it and run `npm install` to install dependencies.
 * Run `npm start` or `npm start -s` to start the server and mongoDB connection.
-* Follow the guide/instruction after `Error in DB connection` message in the console to establish successful connection.
+* There are two options - `installed MongoDB` option and `MongoDB ATLAS` option. To setup successful connection for whichever option you wish to use for your project, follow the guide written in yellow, which comes up after `Server running at http://localhost:3000` and `Error in DB connection` message in the console.
 
 **Customizing dev environment:**
 
