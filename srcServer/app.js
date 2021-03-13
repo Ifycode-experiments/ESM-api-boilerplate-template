@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
+import cors from 'cors';
 import { router as appController } from './api/controllers/appController';
 import { router as starterController } from './api/controllers/starterController';
 
@@ -17,7 +18,20 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(bodyParser.json());
+app.use(cors());
+app.use((req,res,next) => {
+    res.header('Access-Control-Allow-Origin','*');
+    res.header('Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
+    if(req.method === 'OPTIONS')
+    {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+
+    next();
+});
 app.use('/', appController);
 app.use('/starter', starterController);
 
