@@ -22,6 +22,8 @@ You can contribute as a `nodejs developer`, `mongoDB developer` and/or help with
 
 Feel free to ask questions concerning anything not clear on this topic if you have any. Just ask your question(s) in the comment under the issue you wish to work on and you'll be attended to. It is better to ask if you're not sure, than for your pull request to be discarded.
 
+[Report or find issues to work on here](https://github.com/code-collabo/node-mongo-cli/issues).
+
 ## Related repositories
 This is the repository for the files and folders that the node-mongo-cli will set up for you, made by Code Collabo community. Other related repos to the cli project:
 * [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli).
