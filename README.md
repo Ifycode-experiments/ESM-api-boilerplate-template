@@ -1,4 +1,9 @@
 # node-mongo-starter-kit
+
+This is the ***es6+ version*** of the [node-mongo-starter-kit](https://github.com/code-collabo/node-mongo-starter-kit). 
+
+`import express from 'express';`
+
 The `node-mongo-starter-kit` helps to make mongoDB development in nodejs easier. Using the node-mongo-starter-kit has been made easier with the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). While you can also choose to download/clone this starter kit directly from github, the cli let's you not only install the node-mongo-starter-kit, but also allows you to add new model & controller files with content using simple commands. Opt for the [cli](https://github.com/code-collabo/node-mongo-cli) for better experience.
 
 ## How to use node-mongo-starter-kit
