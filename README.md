@@ -32,6 +32,7 @@ Feel free to ask questions concerning anything not clear on this topic if you ha
 ## Related repositories
 This is the repository for the files and folders that the node-mongo-cli will set up for you, made by Code Collabo community. Other related repos to the cli project:
 * [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli).
+* [node-mongo-starter-cjs](https://github.com/code-collabo/node-mongo-starter-cjs)
 * [node-mongo-docs](https://github.com/code-collabo/node-mongo-docs).
 
 ## Project resources
