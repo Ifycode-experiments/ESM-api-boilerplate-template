@@ -23,8 +23,8 @@ err => {
        - ensure you didn't mispell or include wrong details.
 
   To use or see guide for installed mongoDB option:
-    => Comment out import for === MongoDB ATLAS db === in srcServer > app.js,
-      and use import for === Installed mongoDB's db === instead.
+    => Comment out "import mongooseModuleExportAtlas from './atlas/db'" in srcServer > app.js,
+      and use "import mongooseModuleExport from './db'" instead.
     `
     ) );
   }

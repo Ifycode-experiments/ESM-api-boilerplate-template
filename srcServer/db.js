@@ -21,8 +21,8 @@ mongoose.connect(`mongodb://localhost:27017/${process.env.DBNAME}`, {
         - ensure you didn't mispell or include wrong details.
 
     To use or see guide for MongoDB ATLAS option:
-      => Comment out import for === Installed mongoDB's db === in srcServer > app.js,
-        and use import for === MongoDB ATLAS db === instead.
+      => Comment out "import mongooseModuleExport from './db'" in srcServer > app.js,
+        and use "import mongooseModuleExportAtlas from './atlas/db'" instead.
       `
     ) );
     }
