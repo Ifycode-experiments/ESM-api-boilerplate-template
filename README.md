@@ -1,6 +1,6 @@
 # node-mongo-starter-kit
 
-This is the ***es6+ version*** of the [node-mongo-starter-kit](https://github.com/code-collabo/node-mongo-starter-kit). 
+This is the ***es6+ template*** for the [node-mongo-starter-kit](https://github.com/code-collabo/node-mongo-starter-kit). 
 
 `import express from 'express';`
 
