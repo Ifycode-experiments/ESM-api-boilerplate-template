@@ -1,6 +1,6 @@
 # node-mongo-esm-kit
 
-The ***ES Module template*** a.k.a esm, for the [node-mongo project](https://code-collabo.gitbook.io/docs/contributor-guide/node-mongo-project/project-overview)'s starter kit. Other templates to choose from are the commonjs and typescript templates, depending on what you prefer or use.
+The ***ES Module template*** a.k.a esm, for the [node-mongo project](https://code-collabo.gitbook.io/docs/contributor-guide/node-mongo-project/project-overview)'s starter kit. Other templates to choose from are the [commonjs](https://github.com/code-collabo/node-mongo-cjs-kit) and typescript (coming soon) templates, depending on what you prefer or use.
 
 `import express from 'express';`
 
