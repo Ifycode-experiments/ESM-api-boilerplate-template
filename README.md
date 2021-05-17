@@ -1,6 +1,6 @@
-# node-mongo-starter-kit
+# node-mongo-esm-kit
 
-This is the ***es6+ template*** for the [node-mongo-starter-kit](https://github.com/code-collabo/node-mongo-starter-kit). 
+The ***ES Module template*** a.k.a esm, for the [node-mongo project](https://code-collabo.gitbook.io/docs/contributor-guide/node-mongo-project/project-overview)'s starter kit. Other templates to choose from are the commonjs and typescript templates, depending on what you prefer or use.
 
 `import express from 'express';`
 
@@ -12,13 +12,13 @@ This is the ***es6+ template*** for the [node-mongo-starter-kit](https://github.
 ![GitHub all releases](https://img.shields.io/github/downloads/code-collabo/node-mongo-starter-kit/total?color=green)
 -->
 
-The `node-mongo-starter-kit` helps to make mongoDB development in nodejs easier. Using the node-mongo-starter-kit has been made easier with the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). While you can also choose to download/clone this starter kit directly from github, the cli let's you not only install the node-mongo-starter-kit, but also allows you to add new model & controller files with content using simple commands. Opt for the [cli](https://github.com/code-collabo/node-mongo-cli) for better experience.
+The node-mongo starter kit helps to make mongoDB development in nodejs easier. Using the node-mongo starter kit has been made easier with the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). While you can also choose to download/clone this starter kit directly from github, the cli let's you not only install your preferred starter-kit template, but also allows you to add new model & controller files with content using simple commands. Opt for the [cli](https://github.com/code-collabo/node-mongo-cli) for better experience.
 
-## How to use node-mongo-starter-kit
+## How to use the starter kit
 Development environment has been set up already i.e. connection to server & db, eslint and babel transpiler. For use locally, you need to have `mongoDB` [installed](https://docs.mongodb.com/guides/server/install/) with database and collection created and mongoDB running. If you choose to use `mongoDB atlas` then you don't need to have mongoDB installed - just turn on wifi/data connection, [create database and connect to your cluster](https://docs.atlas.mongodb.com/getting-started/).
 
 **Installation:**
-* Install starter-kit through cli or download from github.
+* Install preferred starter kit template through cli or download from github.
 * Cd into the folder you installed it and run `npm install` to install dependencies.
 * Run `npm start` or `npm start -s` to start the server and mongoDB connection.
 * There are two options - `installed MongoDB` option and `MongoDB ATLAS` option. To setup successful connection for whichever option you wish to use for your project, follow the guide written in yellow, which comes up after `Server running at http://localhost:3000` and `Error in DB connection` message in the console.
