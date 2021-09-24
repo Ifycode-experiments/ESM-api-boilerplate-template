@@ -2,12 +2,12 @@
   "name": "node-mongo-starter-kit",
   "version": "1.0.0",
   "description": "Node, express & mongoDB backend starter files.",
-  "main": "srcServer/server.js",
+  "main": "src/server.js",
   "scripts": {
-    "prestart": "babel-node srcServer/startMessage.js",
+    "prestart": "babel-node src/startMessage.js",
     "start": "nodemon --exec npm-run-all --parallel open:src lint:watch",
-    "open:src": "babel-node srcServer/server.js",
-    "lint": "esw srcServer --color",
+    "open:src": "babel-node src/server.js",
+    "lint": "esw src --color",
     "lint:watch": "npm run lint -- --watch"
   },
   "author": "Obiagba Mary",

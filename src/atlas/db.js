@@ -19,11 +19,11 @@ err => {
     console.log( chalk.yellowBright(`To use MongoDB ATLAS option, make sure you:
     => Have wifi/ data turned on and are connected to mongoDB atlas
        - See https://docs.atlas.mongodb.com/getting-started/
-    => Update srcServer > atlas > db.js with your username, password, clusterName and DBname respectively
+    => Update src > atlas > db.js with your username, password, clusterName and DBname respectively
        - ensure you didn't mispell or include wrong details.
 
   To use or see guide for installed mongoDB option:
-    => Comment out "import mongooseModuleExportAtlas from './atlas/db'" in srcServer > app.js,
+    => Comment out "import mongooseModuleExportAtlas from './atlas/db'" in src > app.js,
       and use "import mongooseModuleExport from './db'" instead.
     `
     ) );
