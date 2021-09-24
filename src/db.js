@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 import chalk from 'chalk';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 /* eslint-disable no-console */
 
@@ -17,11 +20,11 @@ mongoose.connect(`mongodb://localhost:27017/${process.env.DBNAME}`, {
       console.log( chalk.yellowBright(`To use installed mongoDB option, make sure you:
       => Have mongoDB installed & running locally
         - See https://docs.mongodb.com/guides/server/install/
-      => Update srcServer > nodemon.json file with your DB name
+      => Update src > nodemon.json file with your DB name
         - ensure you didn't mispell or include wrong details.
 
     To use or see guide for MongoDB ATLAS option:
-      => Comment out "import mongooseModuleExport from './db'" in srcServer > app.js,
+      => Comment out "import mongooseModuleExport from './db'" in src > app.js,
         and use "import mongooseModuleExportAtlas from './atlas/db'" instead.
       `
     ) );

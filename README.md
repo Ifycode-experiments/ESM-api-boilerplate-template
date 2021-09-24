@@ -25,7 +25,7 @@ Development environment has been set up already i.e. connection to server & db, 
 
 **Customizing dev environment:**
 
-Replace `insert-your-project-name` with your own project name in `srcServer > startMessage.js`.
+Replace `insert-your-project-name` with your own project name in `src > startMessage.js`.
 
 ## Contributing to the starter kit
 See [contributor guide](https://code-collabo.gitbook.io/docs/contributor-guide/contributor-guide) and [node-mongo project](https://code-collabo.gitbook.io/docs/contributor-guide/node-mongo-project) portion of the documentation guide for how to contribute to the starter kit templates.
