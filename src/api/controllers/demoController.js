@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { StarterModel as Starter } from '../models/starter';
+import { DemoModel as Demo } from '../models/demo';
 import chalk from 'chalk';
 
 let router = express.Router();
@@ -9,15 +9,15 @@ let router = express.Router();
 /* eslint-disable no-unused-vars */
 let ObjectId = mongoose.Types.ObjectId;
 
-let routeName = 'starter';
+let routeName = 'demo';
 let item = `${routeName}-item`;
 
 /*======================
-  operations for /starter
+  operations for /demo
 =======================*/
 
 router.get('/', (req, res) => {
-  Starter.find()
+  Demo.find()
   .select('_id name age')
   .exec()
   .then(docs => {
@@ -47,12 +47,12 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  let starter = new Starter({
+  let demo = new Demo({
     name: req.body.name,
     age: req.body.age
   });
 
-  starter.save()
+  demo.save()
   .then(doc => {
     res.status(201).json({
       message: `${item} created successfully!`,
@@ -78,12 +78,12 @@ router.post('/', (req, res) => {
 
 
 /*=============================
-  operations for /starter/starterId
+  operations for /demo/demoId
 ==============================*/
 
-router.get('/:starterId', (req, res, next) => {
-  const id = req.params.starterId;
-  Starter.findById(id)
+router.get('/:demoId', (req, res, next) => {
+  const id = req.params.demoId;
+  Demo.findById(id)
   .select('_id name age')
   .exec()
   .then(doc => {
@@ -115,13 +115,13 @@ router.get('/:starterId', (req, res, next) => {
   });
 });
 
-router.patch('/:starterId', (req, res, next) => {
-  const id = req.params.starterId;
+router.patch('/:demoId', (req, res, next) => {
+  const id = req.params.demoId;
   const updateOps = {};
   for  (const ops of req.body) {
       updateOps[ops.propName] = ops.value;
   }
-  Starter.updateOne({_id: id}, { $set: updateOps })
+  Demo.updateOne({_id: id}, { $set: updateOps })
   .exec()
   .then(() => {
     console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
@@ -150,7 +150,7 @@ router.put('/:id', (req, res) => {
       age: req.body.age
   }
 
-  Starter.findByIdAndUpdate(id, { $set: resetItem }, { new: true })
+  Demo.findByIdAndUpdate(id, { $set: resetItem }, { new: true })
   .exec()
   .then(response => {
     console.log( chalk.greenBright(`\nPUT request for ID ${response._id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
@@ -172,9 +172,9 @@ router.put('/:id', (req, res) => {
   });
 });
 
-router.delete('/:starterId', (req, res, next) => {
-  const id = req.params.starterId;
-  Starter.deleteOne({_id: id})
+router.delete('/:demoId', (req, res, next) => {
+  const id = req.params.demoId;
+  Demo.deleteOne({_id: id})
   .exec()
   .then(doc => {
     console.log( chalk.greenBright(`\n${item} DELETED successfully!\n`) );
