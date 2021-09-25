@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 import { router as appController } from './api/controllers/appController';
 import { router as demoController } from './api/controllers/demoController';
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({
   extended: false
 }));
 app.use(express.json());
+app.use(cors({ origin: 'http://localhost:4200' }));
 
 app.use('/', appController);
 app.use('/demo', demoController);
