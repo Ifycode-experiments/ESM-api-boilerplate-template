@@ -3,9 +3,7 @@ import chalk from 'chalk';
 
 /* eslint-disable no-console */
 
-const [username, password, clusterName, DBname] = ['insert-username', 'insert-password', 'insert-clusterName' , 'insert-DBname'];
-
-mongoose.connect(`mongodb+srv://${username}:${password}@${clusterName}.mongodb.net/${DBname}?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@${process.env.CLUSTERNAME}.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
