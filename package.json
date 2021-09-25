@@ -1,7 +1,7 @@
 {
   "name": "node-mongo-esm-kit",
   "version": "1.0.0",
-  "description": "Node, express & mongoDB backend starter files.",
+  "description": "Node js, express & mongoDB boilerplate template - the ES modules template.",
   "main": "src/server.js",
   "scripts": {
     "prestart": "babel-node src/startMessage.js",
