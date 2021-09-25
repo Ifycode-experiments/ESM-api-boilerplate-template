@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import { router as appController } from './api/controllers/appController';
-import { router as starterController } from './api/controllers/starterController';
+import { router as demoController } from './api/controllers/demoController';
 
 //===== Installed mongoDB's db =======
 import mongooseModuleExport from './db'; //eslint-disable-line no-unused-vars
@@ -18,7 +18,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 app.use('/', appController);
-app.use('/starter', starterController);
+app.use('/demo', demoController);
 
 app.use((req, res, next) => {
   const error = new Error('Route not found!');
