@@ -24,12 +24,20 @@ Start server and mongoDB connection:
 ````
 npm start
 ````
-**Note:** Incase you see an error message in the console, the next section will address how you can set up your mongoDB connection successfully.
+**Note:** Incase you see an error message in the terminal, the next section will address how you can set up your mongoDB connection successfully.
 
 ## MongoDB connection options
-Error message in console
-````
-````
+There are two monogoDB connection options already setup for you to choose from:
+- Connection to MongoDB installed on your computer
+- Connection to MongoDB atlas
+
+In the case where the error message `Error in DB connection` is displayed in the terminal when you start the server, you need to either install and get mongoDB running for use locally on your computer or setup mongoDB atlas. Take note that this also includes setting up a database and collection whether you choose the installed option or atlas. Once any of the connection options have been set up, you start the server and you use the appropriate import in the app.js file, the console message `Installed MongoDB connection successful!!!` should now show up in the terminal. More notes on this in the sections that explain the connection options individually. [Visit this link to install mongoDB](https://docs.mongodb.com/guides/server/install/) on your computer, set up your database and collection, and get mongoDB running. [Or choose to use mongoDB atlas](https://docs.atlas.mongodb.com/getting-started/), create database and collection, and connect to your cluster.
+
+## Installed mongoDB option
+
+
+## MongoDB atlas option
+
 
 <!--
 The node-mongo starter kit helps to make mongoDB development in nodejs easier. Using the node-mongo starter kit has been made easier with the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). While you can also choose to download/clone this starter kit directly from github, the cli let's you not only install your preferred starter kit template, but also allows you to add new model & controller files with content using simple commands. Opt for the [cli](https://github.com/code-collabo/node-mongo-cli) for better experience.
