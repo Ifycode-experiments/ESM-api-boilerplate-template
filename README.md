@@ -31,17 +31,15 @@ There are two monogoDB connection options already setup for you to choose from:
 1. Connection to MongoDB installed on your computer
 2. Connection to MongoDB atlas
 
-In the case where the error message `Error in DB connection` is displayed in the terminal when you start the server, you need to either install and get mongoDB running for use locally on your computer or setup mongoDB atlas. More notes on how to get the success message `Installed MongoDB connection successful!!!` or `MongoDB ATLAS connection successful!!!` to show up in the terminal in the sections that explain the mongoDB connection options individually. [Visit this link to install mongoDB](https://docs.mongodb.com/guides/server/install/) on your computer and get mongoDB running if you haven't. [Or choose to use mongoDB atlas](https://docs.atlas.mongodb.com/getting-started/) and connect to your cluster.
+In the case where the error message `Error in DB connection` is displayed in the terminal when you start the server, you need to either install and get mongoDB running for use locally on your computer or setup mongoDB atlas. Once you have done any of these, the message `Installed MongoDB connection successful!!!` or `MongoDB ATLAS connection successful!!!` should now show up in the terminal. More notes in the sections that explain the mongoDB connection options individually. [Visit this link to install mongoDB](https://docs.mongodb.com/guides/server/install/) on your computer and get mongoDB running if you haven't. [Or choose to use mongoDB atlas](https://docs.atlas.mongodb.com/getting-started/) and connect to your cluster.
 
 ## Installed mongoDB option
-Create a `.env` file in the root of the downloaded template. After installing mongoDB, keep mongoDB running in the terminal(s) as shown in the mongoDB docs. Create a database. Add the database name to the .env file like so:
+Create a `.env` file in the root of the downloaded template. After installing mongoDB, keep mongoDB running in the terminal(s) as shown in the mongoDB docs. Create a database and give it any name of your choice. Go to `src/db.js` file, you will see that there is a DBNAME environment variable i.e. `process.env.DBNAME` in the mongoDB connection string. You want to store the database name that you created in this variable. Store your database name in the variable inside the .env file you created earlier like so:
 ````
 DBNAME="insert-your-own-db-name-here"
 ````
-
-
+Also create a collection. You can use the collection name `demo` in the `src/api/models/demo.js` file while you follow this tutorial. You can always a different name later on once you get used to how the template is setup. In the `src/app.js` file, you will find the import named `mongooseModuleExport` which is what you need. If you ever need to use the mongoDB atlas option, then you will need to comment out `mongooseModuleExport` and remove comment from `mongooseModuleExportAtlas` so that you can use atlas instead. Since you have chosen to install mongoDB locally on your computer, the `mongooseModuleExport` import is what you need. So you don't need to change anything in the `src/app.js` file.
  
-
 <!--
 
 Create a database
