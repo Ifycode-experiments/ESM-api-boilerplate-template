@@ -13,7 +13,7 @@ The **node-mongo-esm-kit** is the ES Module (esm) boilerplate template, from the
 - Typescript (coming soon)
 
 ## Installation
-Download the template locally unto your computer through the node-mongo-cli. The CLI is built to provide better experience, but you can also clone or download it manually. In the case where you are having issues using the CLI, download this repo from github. Report issues in the issues tab of the node-mongo-cli repo.
+Download the template locally unto your computer through the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). The CLI is built to provide better experience, but you can also clone or download it manually. In the case where you are having issues using the CLI, download the template from github. Report issues in [the issues tab of the node-mongo-cli repo](https://github.com/code-collabo/node-mongo-cli/issues).
 
 Change directory (cd) into the root of the downloaded template and install dependencies:
 ````
@@ -24,7 +24,7 @@ Start server and mongoDB connection:
 ````
 npm start
 ````
-**Note:** Incase you see an error message in the terminal, the next sections will address how you can set up your mongoDB connection successfully.
+**Note:** Incase you see an error message in the terminal, the next sections will guide you on how to set up your mongoDB connection successfully.
 
 ## MongoDB connection options
 There are two monogoDB connection options already setup for you to choose from:
@@ -38,7 +38,7 @@ Create a `.env` file in the root of the downloaded template. After installing mo
 ````
 DBNAME="insert-your-own-db-name-here"
 ````
-You can add other environment variables if you like, but this tutorial is going to stick to this simple setup. Also create a collection. You can use the collection name `demo` from the `src/api/models/demo.js` file while you follow this tutorial. You can always use a different name later on once you get used to how the template is setup. In the `src/app.js` file, you will find the import named `mongooseModuleExport` which is what you need. If you ever need to use the mongoDB atlas option, then you will need to comment out `mongooseModuleExport` and remove comment from `mongooseModuleExportAtlas` so that you can access the db connection set up for atlas instead. Since you have chosen to install mongoDB locally on your computer, the `mongooseModuleExport` import is what you need. So you don't need to change anything in the `src/app.js` file. Open up http://localhost:3000 in the browser to see the message `App works` displayed on the screen. Also see http://localhost:3000/demo for items in your demo collection. Count should be zero and items should be an empty array since you have not added anything in the database.
+You can add other environment variables if you like, but this tutorial is going to stick to this simple setup. Also create a collection. You can use the collection name `demo` from the `src/api/models/demo.js` file while you follow this tutorial. You can always use a different name later on once you get used to how the template is setup. In the `src/app.js` file, you will find the import named `mongooseModuleExport` which is what you need. If you ever need to use the mongoDB atlas option, then you will need to comment out `mongooseModuleExport` and remove comment from `mongooseModuleExportAtlas` so that you can access the db connection set up for atlas instead. Since you have chosen to install mongoDB locally on your computer, use the `mongooseModuleExport` import. So you don't need to change anything in the `src/app.js` file. Open up http://localhost:3000 in the browser to see the message `App works` displayed on the screen. Also see http://localhost:3000/demo for items in your demo collection. Count should be zero and items should be an empty array since you have not added anything in the database.
 
 ## MongoDB atlas option
 Create a `.env` file in the root of the downloaded template. Create a database (and collection) and connect to your cluster following the mongoDB doc. Go to `src/atlas/db.js` file, you will see that there are environment variables i.e. `process.env.USERNAME`, `process.env.PASSWORD`, `process.env.CLUSTERNAME`, `process.env.DBNAME` in the mongoDB connection string. You want to store your username, password, cluster name and database name that you created with atlas inside these variables. Store your database name in the variable inside the .env file you created earlier like so:
@@ -52,7 +52,7 @@ Use the collection name `demo` from the `src/api/models/demo.js` file while you 
 If you ever need to use the installed mongoDB option, then you will need to comment out `mongooseModuleExportAtlas` and remove comment from `mongooseModuleExport` so that you can access the db connection setup for the installed mongoDB option. Open up http://localhost:3000 in the browser to see the message `App works` displayed on the screen. Also see http://localhost:3000/demo for items in your demo collection. Count should be zero and items should be an empty array since you have not added anything in the database.
 
 ## Interacting with database
-You can use `postman` or any other tool to add data or remove data from the database. To make it easy to test that all is well setup and also to show example usage of the template with a client app in development, you can download the node-mongo-demo-app.
+You can use postman or any other tool to add data or remove data from the database. To make it easy to test that all is well setup and also to show example usage of the template with a client app in development, you can download the node-mongo-demo-app.
 
 Change directory (cd) into the root of the demo app and install dependencies:
 ````
@@ -67,14 +67,10 @@ View the demo app in the browser at http://localhost:4200. Although the app is b
 
 ## Customizing dev environment
 
-Replace `insert-your-project-name` with your own project name in `src/startMessage.js`. 
+Replace `insert-your-project-name` with your own project name in the `src/startMessage.js` file. Modify template as you like it.
 
  
 <!--
-
-## Contributing to the starter kit
-See [contributor guide](https://code-collabo.gitbook.io/docs/contributor-guide/contributor-guide) and [node-mongo project](https://code-collabo.gitbook.io/docs/contributor-guide/node-mongo-project) portion of the documentation guide for how to contribute to the starter kit templates.
-
 ## Technologies
 
 [<img alt="javascript" height="25px" src="https://www.freepnglogos.com/uploads/javascript/javascript-online-logo-for-website-0.png" />](https://github.com/code-collabo/node-mongo-cli)
