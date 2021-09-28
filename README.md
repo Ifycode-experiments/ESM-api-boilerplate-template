@@ -24,22 +24,52 @@ Start server and mongoDB connection:
 ````
 npm start
 ````
-**Note:** Incase you see an error message in the terminal, the next section will address how you can set up your mongoDB connection successfully.
+**Note:** Incase you see an error message in the terminal, the next sections will address how you can set up your mongoDB connection successfully.
 
 ## MongoDB connection options
 There are two monogoDB connection options already setup for you to choose from:
-- Connection to MongoDB installed on your computer
-- Connection to MongoDB atlas
+1. Connection to MongoDB installed on your computer
+2. Connection to MongoDB atlas
 
-In the case where the error message `Error in DB connection` is displayed in the terminal when you start the server, you need to either install and get mongoDB running for use locally on your computer or setup mongoDB atlas. Take note that this also includes setting up a database and collection whether you choose the installed option or atlas. Once any of the connection options have been set up, you start the server and you use the appropriate import in the app.js file, the console message `Installed MongoDB connection successful!!!` should now show up in the terminal. More notes on this in the sections that explain the connection options individually. [Visit this link to install mongoDB](https://docs.mongodb.com/guides/server/install/) on your computer, set up your database and collection, and get mongoDB running. [Or choose to use mongoDB atlas](https://docs.atlas.mongodb.com/getting-started/), create database and collection, and connect to your cluster.
+In the case where the error message `Error in DB connection` is displayed in the terminal when you start the server, you need to either install and get mongoDB running for use locally on your computer or setup mongoDB atlas. More notes on how to get the success message `Installed MongoDB connection successful!!!` or `MongoDB ATLAS connection successful!!!` to show up in the terminal in the sections that explain the mongoDB connection options individually. [Visit this link to install mongoDB](https://docs.mongodb.com/guides/server/install/) on your computer and get mongoDB running if you haven't. [Or choose to use mongoDB atlas](https://docs.atlas.mongodb.com/getting-started/) and connect to your cluster.
 
 ## Installed mongoDB option
+Create a `.env` file in the root of the downloaded template. After installing mongoDB, keep mongoDB running in the terminal(s) as shown in the mongoDB docs. Create a database. Add the database name to the .env file like so:
+````
+DBNAME="insert-your-own-db-name-here"
+````
 
+
+ 
+
+<!--
+
+Create a database
+
+
+
+- 
+- 
+- Create a After creating your data
+- Create a .env file
+
+
+If you are using mongoDB installed on your computer, then
 
 ## MongoDB atlas option
 
 
-<!--
+
+Take note that the set up also involves these whether you choose the installed option or atlas: Setting up a database - you will need this for `db.js` and `.env` files, and use of the appropriate import in the `src/app.js` file. 
+
+Take note that this also includes setting up a database and collection whether you choose the installed option or atlas. Once any of the connection options have been set up, you start the server and you use the appropriate import in the app.js file, the console message `Installed MongoDB connection successful!!!` should now show up in the terminal. More notes on this in the sections that explain the connection options individually.
+
+
+
+
+
+
+
 The node-mongo starter kit helps to make mongoDB development in nodejs easier. Using the node-mongo starter kit has been made easier with the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). While you can also choose to download/clone this starter kit directly from github, the cli let's you not only install your preferred starter kit template, but also allows you to add new model & controller files with content using simple commands. Opt for the [cli](https://github.com/code-collabo/node-mongo-cli) for better experience.
 
 ## How to use the starter kit
