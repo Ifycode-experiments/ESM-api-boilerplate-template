@@ -52,7 +52,7 @@ Use the collection name `demo` from the src/api/models/demo.js file while you fo
 If you ever need to use the installed mongoDB option, then you will need to comment out mongooseModuleExportAtlas and remove comment from mongooseModuleExport so that you can access the db connection setup for the installed mongoDB option. Open up http://localhost:3000 in the browser to see the message "App works" displayed on the screen. Also see http://localhost:3000/demo for items in your demo collection. Count should be zero and items should be an empty array since you have not added anything in the database.
 
 ## Interacting with database
-You can use postman or any other tool to add data or remove data from the database. To make it easy to test that all is well setup and also to show example usage of the template with a client app in development, you can download the node-mongo-demo-app.
+You can use postman or any other tool to add data or remove data from the database. To make it easy to test that all is well setup and also to show example usage of the template with a client app in development, you can download the [node-mongo-demo-app](https://github.com/code-collabo/node-mongo-demo-app).
 
 Change directory (cd) into the root of the demo app and install dependencies:
 ````
