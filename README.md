@@ -38,7 +38,24 @@ Create a `.env` file in the root of the downloaded template. After installing mo
 ````
 DBNAME="insert-your-own-db-name-here"
 ````
-Also create a collection. You can use the collection name `demo` in the `src/api/models/demo.js` file while you follow this tutorial. You can always a different name later on once you get used to how the template is setup. In the `src/app.js` file, you will find the import named `mongooseModuleExport` which is what you need. If you ever need to use the mongoDB atlas option, then you will need to comment out `mongooseModuleExport` and remove comment from `mongooseModuleExportAtlas` so that you can use atlas instead. Since you have chosen to install mongoDB locally on your computer, the `mongooseModuleExport` import is what you need. So you don't need to change anything in the `src/app.js` file.
+Also create a collection. You can use the collection name `demo` in the `src/api/models/demo.js` file while you follow this tutorial. You can always a different name later on once you get used to how the template is setup. In the `src/app.js` file, you will find the import named `mongooseModuleExport` which is what you need. If you ever need to use the mongoDB atlas option, then you will need to comment out `mongooseModuleExport` and remove comment from `mongooseModuleExportAtlas` so that you can use atlas instead. Since you have chosen to install mongoDB locally on your computer, the `mongooseModuleExport` import is what you need. So you don't need to change anything in the `src/app.js` file. Open up http://localhost:3000 in the browser to see the message `App works` displayed on the screen. Also see http://localhost:3000/demo for items in your demo collection. Count should be zero and items should be an empty array since you have not added anything in the database.
+
+## MongoDB atlas option
+Add atlas info here...
+
+## Interacting with database
+You can use `postman` or any other tool to add data or remove data from the database. To make it easy to test that all is well setup and also to show example usage of the template with a client app in development, you can download the node-mongo-demo-app.
+
+Change directory (cd) into the root of the demo app and install dependencies:
+````
+npm install
+````
+
+Start the app:
+````
+npm start
+````
+View the demo app in the browser at http://localhost:4200. Although the app is built with angular, you don't need to have any knowledge of how to write an angular application. Just interact with form supplying name and age (these have been configured in the template's `src/api/` folder). Make sure to keep port 3000 still running. You will see your entries in a table under the form. You can also always refresh your browser for http://localhost:3000/demo to see that the changes you made are now returned as json and are in the database. 
  
 <!--
 
@@ -54,7 +71,6 @@ Create a database
 
 If you are using mongoDB installed on your computer, then
 
-## MongoDB atlas option
 
 
 
