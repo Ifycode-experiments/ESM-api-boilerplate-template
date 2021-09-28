@@ -34,14 +34,22 @@ There are two monogoDB connection options already setup for you to choose from:
 In the case where the error message `Error in DB connection` is displayed in the terminal when you start the server, you need to either install and get mongoDB running for use locally on your computer or setup mongoDB atlas. Once you have done any of these, the message `Installed MongoDB connection successful!!!` or `MongoDB ATLAS connection successful!!!` should now show up in the terminal. More notes in the sections that explain the mongoDB connection options individually. [Visit this link to install mongoDB](https://docs.mongodb.com/guides/server/install/) on your computer and get mongoDB running if you haven't. [Or choose to use mongoDB atlas](https://docs.atlas.mongodb.com/getting-started/) and connect to your cluster.
 
 ## Installed mongoDB option
-Create a `.env` file in the root of the downloaded template. After installing mongoDB, keep mongoDB running in the terminal(s) as shown in the mongoDB docs. Create a database and give it any name of your choice. Go to `src/db.js` file, you will see that there is a DBNAME environment variable i.e. `process.env.DBNAME` in the mongoDB connection string. You want to store the database name that you created in this variable. Store your database name in the variable inside the .env file you created earlier like so:
+Create a `.env` file in the root of the downloaded template. After installing mongoDB, keep mongoDB running in the terminal(s) as shown in the mongoDB doc. Create a database and give it any name of your choice. Go to `src/db.js` file, you will see that there is a DBNAME environment variable i.e. `process.env.DBNAME` in the mongoDB connection string. You want to store the database name that you created in this variable. Store your database name in the variable inside the .env file you created earlier like so:
 ````
 DBNAME="insert-your-own-db-name-here"
 ````
-Also create a collection. You can use the collection name `demo` in the `src/api/models/demo.js` file while you follow this tutorial. You can always a different name later on once you get used to how the template is setup. In the `src/app.js` file, you will find the import named `mongooseModuleExport` which is what you need. If you ever need to use the mongoDB atlas option, then you will need to comment out `mongooseModuleExport` and remove comment from `mongooseModuleExportAtlas` so that you can use atlas instead. Since you have chosen to install mongoDB locally on your computer, the `mongooseModuleExport` import is what you need. So you don't need to change anything in the `src/app.js` file. Open up http://localhost:3000 in the browser to see the message `App works` displayed on the screen. Also see http://localhost:3000/demo for items in your demo collection. Count should be zero and items should be an empty array since you have not added anything in the database.
+You can add other environment variables if you like, but this tutorial is going to stick to this simple setup. Also create a collection. You can use the collection name `demo` from the `src/api/models/demo.js` file while you follow this tutorial. You can always use a different name later on once you get used to how the template is setup. In the `src/app.js` file, you will find the import named `mongooseModuleExport` which is what you need. If you ever need to use the mongoDB atlas option, then you will need to comment out `mongooseModuleExport` and remove comment from `mongooseModuleExportAtlas` so that you can access the db connection set up for atlas instead. Since you have chosen to install mongoDB locally on your computer, the `mongooseModuleExport` import is what you need. So you don't need to change anything in the `src/app.js` file. Open up http://localhost:3000 in the browser to see the message `App works` displayed on the screen. Also see http://localhost:3000/demo for items in your demo collection. Count should be zero and items should be an empty array since you have not added anything in the database.
 
 ## MongoDB atlas option
-Add atlas info here...
+Create a `.env` file in the root of the downloaded template. Create a database (and collection) and connect to your cluster following the mongoDB doc. Go to `src/atlas/db.js` file, you will see that there are environment variables i.e. `process.env.USERNAME`, `process.env.PASSWORD`, `process.env.CLUSTERNAME`, `process.env.DBNAME` in the mongoDB connection string. You want to store your username, password, cluster name and database name that you created with atlas inside these variables. Store your database name in the variable inside the .env file you created earlier like so:
+````
+DBNAME="insert-your-own-db-name-here"
+USERNAME="insert-your-own-username-here"
+PASSWORD="insert-your-own-password-here"
+CLUSTERNAME="insert-your-own-clustername-here"
+````
+Use the collection name `demo` from the `src/api/models/demo.js` file while you follow this tutorial. You can always use a different name later on once you get used to how the template is setup. In the `src/app.js` file, you will find the import named `mongooseModuleExportAtlas` which is what you need but is commented out. Comment out `mongooseModuleExport` and remove comment from `mongooseModuleExportAtlas` so that you can access the db connection set up for atlas instead.
+If you ever need to use the installed mongoDB option, then you will need to comment out `mongooseModuleExportAtlas` and remove comment from `mongooseModuleExport` so that you can access the db connection setup for the installed mongoDB option. Open up http://localhost:3000 in the browser to see the message `App works` displayed on the screen. Also see http://localhost:3000/demo for items in your demo collection. Count should be zero and items should be an empty array since you have not added anything in the database.
 
 ## Interacting with database
 You can use `postman` or any other tool to add data or remove data from the database. To make it easy to test that all is well setup and also to show example usage of the template with a client app in development, you can download the node-mongo-demo-app.
@@ -56,48 +64,13 @@ Start the app:
 npm start
 ````
 View the demo app in the browser at http://localhost:4200. Although the app is built with angular, you don't need to have any knowledge of how to write an angular application. Just interact with form supplying name and age (these have been configured in the template's `src/api/` folder). Make sure to keep port 3000 still running. You will see your entries in a table under the form. You can also always refresh your browser for http://localhost:3000/demo to see that the changes you made are now returned as json and are in the database. 
+
+## Customizing dev environment
+
+Replace `insert-your-project-name` with your own project name in `src/startMessage.js`. 
+
  
 <!--
-
-Create a database
-
-
-
-- 
-- 
-- Create a After creating your data
-- Create a .env file
-
-
-If you are using mongoDB installed on your computer, then
-
-
-
-
-Take note that the set up also involves these whether you choose the installed option or atlas: Setting up a database - you will need this for `db.js` and `.env` files, and use of the appropriate import in the `src/app.js` file. 
-
-Take note that this also includes setting up a database and collection whether you choose the installed option or atlas. Once any of the connection options have been set up, you start the server and you use the appropriate import in the app.js file, the console message `Installed MongoDB connection successful!!!` should now show up in the terminal. More notes on this in the sections that explain the connection options individually.
-
-
-
-
-
-
-
-The node-mongo starter kit helps to make mongoDB development in nodejs easier. Using the node-mongo starter kit has been made easier with the [node-mongo-cli](https://github.com/code-collabo/node-mongo-cli). While you can also choose to download/clone this starter kit directly from github, the cli let's you not only install your preferred starter kit template, but also allows you to add new model & controller files with content using simple commands. Opt for the [cli](https://github.com/code-collabo/node-mongo-cli) for better experience.
-
-## How to use the starter kit
-Development environment has been set up already i.e. connection to server & db, eslint and babel transpiler. For use locally, you need to have `mongoDB` [installed](https://docs.mongodb.com/guides/server/install/) with database and collection created and mongoDB running. If you choose to use `mongoDB atlas` then you don't need to have mongoDB installed - just turn on wifi/data connection, [create database and connect to your cluster](https://docs.atlas.mongodb.com/getting-started/).
-
-**Installation:**
-* Install preferred starter kit template through cli or download from github.
-* Cd into the folder you installed it and run `npm install` to install dependencies.
-* Run `npm start` or `npm start -s` to start the server and mongoDB connection.
-* There are two options - `installed MongoDB` option and `MongoDB ATLAS` option. To setup successful connection for whichever option you wish to use for your project, follow the guide written in yellow, which comes up after `Server running at http://localhost:3000` and `Error in DB connection` message in the console.
-
-**Customizing dev environment:**
-
-Replace `insert-your-project-name` with your own project name in `src > startMessage.js`.
 
 ## Contributing to the starter kit
 See [contributor guide](https://code-collabo.gitbook.io/docs/contributor-guide/contributor-guide) and [node-mongo project](https://code-collabo.gitbook.io/docs/contributor-guide/node-mongo-project) portion of the documentation guide for how to contribute to the starter kit templates.
